@@ -4,11 +4,11 @@ if (NOT PYTHON_LIBRARIES OR NOT PYTHON_INCLUDE_DIRS)
   FIND_PACKAGE(PythonLibsDist)
 endif()
 
-include_directories(${PYTHONCXX_SOURCE_DIR} ${PYTHON_INCLUDE_DIRS})
-link_directories(${PYTHONCXX_BINARY_DIR})
+include_directories(${PYTHONCPPAPI_SOURCE_DIR} ${PYTHON_INCLUDE_DIRS})
+link_directories(${PYTHONCPPAPI_BINARY_DIR})
 
-add_executable(PythonCxxTest PythonCxxTest.cxx)
-target_link_libraries(PythonCxxTest PythonCxx ${PYTHON_LIBRARIES})
+add_executable(PythonCppApiTest PythonCppApiTest.cxx)
+target_link_libraries(PythonCppApiTest PythonCppApi ${PYTHON_LIBRARIES})
 
 set(files
     test.py hello.py 
@@ -16,7 +16,7 @@ set(files
 foreach(f ${files})
   configure_file(
     ${CMAKE_CURRENT_SOURCE_DIR}/${f}
-    ${PYTHONCXX_BINARY_DIR}/Testing/${f}
+    ${PYTHONCPPAPI_BINARY_DIR}/Testing/${f}
     COPYONLY)
 endforeach()
 

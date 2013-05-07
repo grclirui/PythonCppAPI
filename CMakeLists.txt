@@ -1,5 +1,5 @@
 cmake_minimum_required (VERSION 2.8)
-project(PYTHONCXX)
+project(PYTHONCPPAPI)
 
 add_subdirectory(Testing)
 
@@ -10,6 +10,23 @@ if (NOT PYTHON_LIBRARIES OR NOT PYTHON_INCLUDE_DIRS)
 endif()
 
 include_directories(${PYTHON_INCLUDE_DIRS})
-add_library(PythonCxx PythonCxx.cxx)
-target_link_libraries(PythonCxx ${PYTHON_LIBRARIES})
+
+set(HEADERS
+  PythonCppApiAutoPyObjectPtr.h
+  PythonCppApiInterpreter.h
+  PythonCppApiCallFunction.h
+  Variant.h
+  PythonCppApiUtility.h
+  )
+
+set(SOURCES
+  PythonCppApiInterpreter.cxx
+  PythonCppApiCallFunction.cxx
+  Variant.cxx
+  PythonCppApiUtility.cxx
+  )
+
+#add_library(PythonCppApi PythonCppApiAutoPyObjectPtr.h PythonCppApiException.h PythonCppApiException.cxx PythonCppApiInterpreter.h PythonCppApiInterpreter.cxx PythonCppApiCallFunction.h PythonCppApiCallFunction.cxx Variant.h Variant.cxx PythonCppApiUtility.h PythonCppApiUtility.cxx)
+add_library(PythonCppApi ${HEADERS} ${SOURCES})
+target_link_libraries(PythonCppApi ${PYTHON_LIBRARIES})
 

@@ -1,4 +1,3 @@
-SlicerPythonCxx
+PythonCppApi
 ===============
-
-SlicerPythonCxx
+PythonCppApi
