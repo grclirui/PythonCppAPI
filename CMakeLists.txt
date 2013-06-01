@@ -1,7 +1,7 @@
 cmake_minimum_required (VERSION 2.8)
 project(PythonCppAPI)
 
-add_subdirectory(Testing)
+#add_subdirectory(Testing)
 
 find_package(PythonLibs REQUIRED)
 

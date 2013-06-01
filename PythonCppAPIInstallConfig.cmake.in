@@ -11,5 +11,5 @@ set(PythonCppAPI_LIBRARY_DIR
   "${PythonCppAPI_CONFIG_DIR}"
   )
 set(PythonCppAPI_USE_FILE
-  "${PythonDescriptionParser_CONFIG_DIR}/UseModuleDescriptionParser.cmake"
+  "${PythonCppAPI_CONFIG_DIR}/UsePythonCppAPI.cmake"
   )

@@ -3,7 +3,7 @@
 # Settings specific to the build tree
 #
 set(PythonCppAPI_INCLUDE_DIR_CONFIG
-  ${ModuleDescriptionParser_INCLUDE_DIR}
+  ${PythonCppAPI_INCLUDE_DIR}
   )
 
 set(PythonCppAPI_LIBRARY_DIR_CONFIG
