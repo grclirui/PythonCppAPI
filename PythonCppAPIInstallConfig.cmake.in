@@ -1,0 +1,15 @@
+#
+get_filename_component(PythonCppAPI_CONFIG_DIR
+  "${CMAKE_CURRENT_LIST_FILE}" PATH
+  )
+
+#
+set(PythonCppAPI_INCLUDE_DIR
+  "${PythonCppAPI_CONFIG_DIR}/../../include/PythonCppAPI"
+  )
+set(PythonCppAPI_LIBRARY_DIR
+  "${PythonCppAPI_CONFIG_DIR}"
+  )
+set(PythonCppAPI_USE_FILE
+  "${PythonDescriptionParser_CONFIG_DIR}/UseModuleDescriptionParser.cmake"
+  )

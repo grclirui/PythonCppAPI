@@ -1,0 +1,13 @@
+set(PythonCppAPI_INCLUDE_DIR
+  "@PythonCppAPI_INCLUDE_DIR_CONFIG@"
+  )
+set(PythonCppAPI_LIBRARY_DIR
+  "@PythonCppAPI_LIBRARY_DIR_CONFIG@"
+  )
+set(PythonCppAPI_USE_FILE
+  "@PythonCppAPI_USE_FILE_CONFIG@"
+  )
+
+if(NOT TARGET PythonCppAPI AND EXISTS "@CMAKE_CURRENT_BINARY_DIR@/PythonCppAPITargets.cmake")
+  include("@CMAKE_CURRENT_BINARY_DIR@/PythonCppAPITargets.cmake")
+endif()
