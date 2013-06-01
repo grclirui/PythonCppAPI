@@ -67,3 +67,6 @@ set(lib_name PythonCppAPI)
 add_library(${lib_name} ${HEADERS} ${SOURCES})
 target_link_libraries(${lib_name} ${PYTHON_LIBRARIES})
 
+include(GeneratePythonCppAPIConfig.cmake)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/UsePythonCppAPI.cmake.in
+  ${CMAKE_CURRENT_BINARY_DIR}/UsePythonCppAPI.cmake COPYONLY)
