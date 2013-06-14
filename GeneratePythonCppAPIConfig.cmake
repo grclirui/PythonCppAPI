@@ -18,7 +18,7 @@ set(PythonCppAPI_USE_FILE_CONFIG
 # configure PythonCppApiConfig.cmake for the build tree
 #
 configure_file(
-  ${PythonCppAPI_SOURCE_DIR}/PythonCppApiConfig.cmake.in
-  ${PythonCppAPI_BINARY_DIR}/PythonCppApiConfig.cmake
+  ${PythonCppAPI_SOURCE_DIR}/PythonCppAPIConfig.cmake.in
+  ${PythonCppAPI_BINARY_DIR}/PythonCppAPIConfig.cmake
   @ONLY
   )
