@@ -1,8 +1,8 @@
 set(PythonCppAPI_INCLUDE_DIR
   "@PythonCppAPI_INCLUDE_DIR_CONFIG@"
   )
-set(PythonCppAPI_LIBRARY_DIR
-  "@PythonCppAPI_LIBRARY_DIR_CONFIG@"
+set(PythonCppAPI_LIBRARIES
+  "@PythonCppAPI_LIBRARIES_CONFIG@"
   )
 set(PythonCppAPI_USE_FILE
   "@PythonCppAPI_USE_FILE_CONFIG@"
