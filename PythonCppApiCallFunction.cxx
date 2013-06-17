@@ -84,6 +84,13 @@ py::Variant py::PythonCppApiCallFunction::CallFunction(const std::string& functi
     const py::ArgMap& args)
 {
   PythonCppApiAutoPyObjectPtr ret (MakeFunctionCall(functionName, args));
+  if (PyBool_Check(ret))
+    {
+    if (ret == Py_True) 
+      return Variant(true);
+    else 
+      return Variant(false);
+    }
   if (PyInt_Check(ret))
     {
     return Variant(PyInt_AsLong(ret));
