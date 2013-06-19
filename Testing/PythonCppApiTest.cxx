@@ -42,7 +42,7 @@ run_test(int argc, char** argv)
   // Call a function that takes two long arguments and returns
   // a long      
   {
-  Variant ret(0); // value returned by python is stored here
+  PythonCppApiVariant ret(0); // value returned by python is stored here
   args["10"] = PythonLong;
   args["20"] = PythonLong;
   ret = pyCppApiCallFunction.CallFunction("multiply", args);
@@ -52,7 +52,7 @@ run_test(int argc, char** argv)
     
     // call a function a takes a string and just echoes it
   {
-  Variant ret("");
+  PythonCppApiVariant ret("");
   args["Hello from C++"] = PythonString;
   ret = pyCppApiCallFunction.CallFunction("echo", args);
   std::cout << ret.toString(&ok, "") << '\n';
@@ -61,9 +61,9 @@ run_test(int argc, char** argv)
 
   // call a function that returns a tuple
   {
-  Variant ret;
+  PythonCppApiVariant ret;
 	ret = pyCppApiCallFunction.CallFunction("names_as_tuple", args);
-  if (ret.getType() == py::Variant::StringList)
+  if (ret.getType() == py::PythonCppApiVariant::StringList)
     {
     std::cout << "returned a string list (vector of strings)" << std::endl;
     std::vector<std::string> retStringList = ret.toVector(&ok);
@@ -76,9 +76,9 @@ run_test(int argc, char** argv)
     
   // call a function that returns a dictionary
   {
-  Variant ret;
+  PythonCppApiVariant ret;
 	ret = pyCppApiCallFunction.CallFunction("config", args);
-  if (ret.getType() == Variant::StringMap)
+  if (ret.getType() == PythonCppApiVariant::StringMap)
     {
     std::cout << "returned a string map (dictionary)" << std::endl;
     std::map<std::string,std::string> retMap = ret.toMap(&ok);
@@ -93,9 +93,9 @@ run_test(int argc, char** argv)
 
   // call a function that returns a list
   {
-  Variant ret;
+  PythonCppApiVariant ret;
 	ret = pyCppApiCallFunction.CallFunction("names_as_list", args);
-  if (ret.getType() == Variant::StringList)
+  if (ret.getType() == PythonCppApiVariant::StringList)
     {
     std::cout << "returned a string list (vector of strings)" << std::endl;
     std::vector<std::string> retStringList = ret.toVector(&ok);

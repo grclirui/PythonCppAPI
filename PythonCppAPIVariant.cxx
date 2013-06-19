@@ -1,4 +1,4 @@
-#include "Variant.h"
+#include "PythonCppApiVariant.h"
 
 using namespace std;
 
@@ -9,95 +9,95 @@ using namespace std;
     freeComplexType();\
     }
 
-py::Variant::Variant(void)
+py::PythonCppApiVariant::PythonCppApiVariant(void)
 {
   m_type = Invalid;
 }
 
-py::Variant::Variant(const int& i)
+py::PythonCppApiVariant::PythonCppApiVariant(const int& i)
 {
   m_type = Invalid;
   this->operator =(i);
 }
 
-py::Variant::Variant(const char& c)
+py::PythonCppApiVariant::PythonCppApiVariant(const char& c)
 {
   m_type = Invalid;
   this->operator =(c);
 }
 
-py::Variant::Variant(const short& s)
+py::PythonCppApiVariant::PythonCppApiVariant(const short& s)
 {
   m_type = Invalid;
   this->operator =(s);
 }
 
-py::Variant::Variant(const long& l)
+py::PythonCppApiVariant::PythonCppApiVariant(const long& l)
 {
   m_type = Invalid;
   this->operator =(l);
 }
 
-py::Variant::Variant(const long long & ll)
+py::PythonCppApiVariant::PythonCppApiVariant(const long long & ll)
 {
   m_type = Invalid;
   this->operator =(ll);
 }
 
-py::Variant::Variant(const float& f)
+py::PythonCppApiVariant::PythonCppApiVariant(const float& f)
 {
   m_type = Invalid;
   this->operator =(f);
 }
 
-py::Variant::Variant(const double& d)
+py::PythonCppApiVariant::PythonCppApiVariant(const double& d)
 {
   m_type = Invalid;
   this->operator =(d);
 }
 
-py::Variant::Variant(const std::string& str)
+py::PythonCppApiVariant::PythonCppApiVariant(const std::string& str)
 {
   m_type = Invalid;
   this->operator =(str);
 }
 
-py::Variant::Variant(const std::vector<std::string>& vec)
+py::PythonCppApiVariant::PythonCppApiVariant(const std::vector<std::string>& vec)
 {
   m_type = Invalid;
   this->operator =(vec);
 }
 
-py::Variant::Variant(const std::map<std::string, std::string>& mp)
+py::PythonCppApiVariant::PythonCppApiVariant(const std::map<std::string, std::string>& mp)
 {
   m_type = Invalid;
   this->operator =(mp);
 }
 
-py::Variant::Variant(const bool& b)
+py::PythonCppApiVariant::PythonCppApiVariant(const bool& b)
 {
   m_type = Invalid;
   this->operator =(b);
 }
 
-py::Variant::Variant(const char* str)
+py::PythonCppApiVariant::PythonCppApiVariant(const char* str)
 {
   m_type = Invalid;
   this->operator =(std::string(str));
 }
 
-py::Variant::Variant(const Variant& other)
+py::PythonCppApiVariant::PythonCppApiVariant(const PythonCppApiVariant& other)
 {
   m_type = Invalid;
   this->operator =(other);
 }
 
-py::Variant::~Variant(void)
+py::PythonCppApiVariant::~PythonCppApiVariant(void)
 {
   CheckAndFreeComplex();
 }
 
-py::Variant& py::Variant::operator=(const int& i)
+py::PythonCppApiVariant& py::PythonCppApiVariant::operator=(const int& i)
 {
   CheckAndFreeComplex();
   m_data.i = i;
@@ -105,7 +105,7 @@ py::Variant& py::Variant::operator=(const int& i)
   return *this;
 }
 
-py::Variant& py::Variant::operator=(const char& c)
+py::PythonCppApiVariant& py::PythonCppApiVariant::operator=(const char& c)
 {
   CheckAndFreeComplex();
   m_data.c = c;
@@ -113,7 +113,7 @@ py::Variant& py::Variant::operator=(const char& c)
   return *this;
 }
 
-py::Variant& py::Variant::operator=(const short& s)
+py::PythonCppApiVariant& py::PythonCppApiVariant::operator=(const short& s)
 {
   CheckAndFreeComplex();
   m_data.s = s;
@@ -121,7 +121,7 @@ py::Variant& py::Variant::operator=(const short& s)
   return *this;
 }
 
-py::Variant& py::Variant::operator=(const long& l)
+py::PythonCppApiVariant& py::PythonCppApiVariant::operator=(const long& l)
 {
   CheckAndFreeComplex();
   m_data.l = l;
@@ -129,7 +129,7 @@ py::Variant& py::Variant::operator=(const long& l)
   return *this;
 }
 
-py::Variant& py::Variant::operator=(const long long & ll)
+py::PythonCppApiVariant& py::PythonCppApiVariant::operator=(const long long & ll)
 {
   CheckAndFreeComplex();
   m_data.ll = ll;
@@ -137,7 +137,7 @@ py::Variant& py::Variant::operator=(const long long & ll)
   return *this;
 }
 
-py::Variant& py::Variant::operator=(const float& f)
+py::PythonCppApiVariant& py::PythonCppApiVariant::operator=(const float& f)
 {
   CheckAndFreeComplex();
   m_data.f = f;
@@ -145,7 +145,7 @@ py::Variant& py::Variant::operator=(const float& f)
   return *this;
 }
 
-py::Variant& py::Variant::operator=(const double& d)
+py::PythonCppApiVariant& py::PythonCppApiVariant::operator=(const double& d)
 {
   CheckAndFreeComplex();
   m_data.d = d;
@@ -153,7 +153,7 @@ py::Variant& py::Variant::operator=(const double& d)
   return *this;
 }
 
-py::Variant& py::Variant::operator=(const std::string& str)
+py::PythonCppApiVariant& py::PythonCppApiVariant::operator=(const std::string& str)
 {
   CheckAndFreeComplex();
   m_data.ptr = new string(str);
@@ -161,7 +161,7 @@ py::Variant& py::Variant::operator=(const std::string& str)
   return *this;
 }
 
-py::Variant& py::Variant::operator=(const std::vector<std::string>& vec)
+py::PythonCppApiVariant& py::PythonCppApiVariant::operator=(const std::vector<std::string>& vec)
 {
   CheckAndFreeComplex();
   m_data.ptr = new std::vector<string>(vec);
@@ -169,7 +169,7 @@ py::Variant& py::Variant::operator=(const std::vector<std::string>& vec)
   return *this;
 }
 
-py::Variant& py::Variant::operator=(const std::map<std::string,std::string>& mp)
+py::PythonCppApiVariant& py::PythonCppApiVariant::operator=(const std::map<std::string,std::string>& mp)
 {
   CheckAndFreeComplex();
   m_data.ptr = new std::map<string, string>(mp);
@@ -177,7 +177,7 @@ py::Variant& py::Variant::operator=(const std::map<std::string,std::string>& mp)
   return *this;
 }
 
-py::Variant& py::Variant::operator=(const bool& b)
+py::PythonCppApiVariant& py::PythonCppApiVariant::operator=(const bool& b)
 {
   CheckAndFreeComplex();
   m_data.b = b;
@@ -185,7 +185,7 @@ py::Variant& py::Variant::operator=(const bool& b)
   return *this;
 }
 
-py::Variant& py::Variant::operator=(const py::Variant& other)
+py::PythonCppApiVariant& py::PythonCppApiVariant::operator=(const py::PythonCppApiVariant& other)
 {
   m_type = Invalid;
   if (other.isComplexType())
@@ -201,6 +201,8 @@ py::Variant& py::Variant::operator=(const py::Variant& other)
       case StringMap:
         this->operator=(other.toMap());
         break;
+      default:
+        break;
       }
     }
   else
@@ -212,7 +214,7 @@ py::Variant& py::Variant::operator=(const py::Variant& other)
   return *this;
 }
 
-void py::Variant::freeComplexType()
+void py::PythonCppApiVariant::freeComplexType()
 {
   switch(getType())
     {
@@ -225,10 +227,12 @@ void py::Variant::freeComplexType()
     case StringMap:
       delete(std::map<string, string>*) m_data.ptr;
       break;
+    default:
+      break;
     }
 }
 
-int py::Variant::toInt(bool *ok/*=0*/, int defaultValue /*=0*/) const
+int py::PythonCppApiVariant::toInt(bool *ok/*=0*/, int defaultValue /*=0*/) const
 {
   if (getType() == Int)
     {
@@ -248,7 +252,7 @@ int py::Variant::toInt(bool *ok/*=0*/, int defaultValue /*=0*/) const
     }
 }
 
-char py::Variant::toChar(bool *ok/*=0*/, char defaultChar /*=0*/) const
+char py::PythonCppApiVariant::toChar(bool *ok/*=0*/, char defaultChar /*=0*/) const
 {
   if (getType() == Char)
     {
@@ -268,7 +272,7 @@ char py::Variant::toChar(bool *ok/*=0*/, char defaultChar /*=0*/) const
     }
 }
 
-short py::Variant::toShort(bool *ok/*=0*/, short defaultShort /*=0*/) const
+short py::PythonCppApiVariant::toShort(bool *ok/*=0*/, short defaultShort /*=0*/) const
 {
   if (getType() == Short)
     {
@@ -288,7 +292,7 @@ short py::Variant::toShort(bool *ok/*=0*/, short defaultShort /*=0*/) const
     }
 }
 
-long py::Variant::toLong(bool *ok/*=0*/, long defaultLong /*=0*/) const
+long py::PythonCppApiVariant::toLong(bool *ok/*=0*/, long defaultLong /*=0*/) const
 {
   if (getType() == Long)
     {
@@ -308,7 +312,7 @@ long py::Variant::toLong(bool *ok/*=0*/, long defaultLong /*=0*/) const
     }
 }
 
-long long py::Variant::toLongLong(bool *ok/*=0*/, long long defaultLongLong /*=0*/) const
+long long py::PythonCppApiVariant::toLongLong(bool *ok/*=0*/, long long defaultLongLong /*=0*/) const
 {
   if (getType() == LongLong)
     {
@@ -328,7 +332,7 @@ long long py::Variant::toLongLong(bool *ok/*=0*/, long long defaultLongLong /*=0
     }
 }
 
-float py::Variant::toFloat(bool *ok/*=0*/, float defaultFloat /*=0*/) const
+float py::PythonCppApiVariant::toFloat(bool *ok/*=0*/, float defaultFloat /*=0*/) const
 {
   if (getType() == Float)
     {
@@ -348,7 +352,7 @@ float py::Variant::toFloat(bool *ok/*=0*/, float defaultFloat /*=0*/) const
     }
 }
 
-double py::Variant::toDouble(bool *ok/*=0*/, double defaultDouble /*=0*/) const
+double py::PythonCppApiVariant::toDouble(bool *ok/*=0*/, double defaultDouble /*=0*/) const
 {
   if (getType() == Double)
     {
@@ -368,7 +372,7 @@ double py::Variant::toDouble(bool *ok/*=0*/, double defaultDouble /*=0*/) const
     }
 }
 
-std::string py::Variant::toString(bool *ok/*=0*/, const std::string& defaultString /*=""*/) const
+std::string py::PythonCppApiVariant::toString(bool *ok/*=0*/, const std::string& defaultString /*=""*/) const
 {
   if (getType() == String)
     {
@@ -388,7 +392,7 @@ std::string py::Variant::toString(bool *ok/*=0*/, const std::string& defaultStri
     }
 }
 
-std::vector<std::string> py::Variant::toVector(bool *ok/*=0*/) const
+std::vector<std::string> py::PythonCppApiVariant::toVector(bool *ok/*=0*/) const
 {
   if (getType() == StringList)
     {
@@ -408,7 +412,7 @@ std::vector<std::string> py::Variant::toVector(bool *ok/*=0*/) const
     }
 }
 
-std::map<std::string,std::string> py::Variant::toMap(bool *ok/*=0*/) const
+std::map<std::string,std::string> py::PythonCppApiVariant::toMap(bool *ok/*=0*/) const
 {
   if (getType() == StringMap)
     {
@@ -428,7 +432,7 @@ std::map<std::string,std::string> py::Variant::toMap(bool *ok/*=0*/) const
     }
 }
 
-bool py::Variant::toBool(bool *ok/*=0*/, bool defaultBool/*=false*/) const
+bool py::PythonCppApiVariant::toBool(bool *ok/*=0*/, bool defaultBool/*=false*/) const
 {
   if (getType() == Bool)
     {
@@ -448,7 +452,7 @@ bool py::Variant::toBool(bool *ok/*=0*/, bool defaultBool/*=false*/) const
     }
 }
 
-std::map<std::string, std::string>* py::Variant::mapPointer() const
+std::map<std::string, std::string>* py::PythonCppApiVariant::mapPointer() const
 {
   if (getType() == StringMap)
     {

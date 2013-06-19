@@ -53,8 +53,13 @@ py::PythonCppApiCallFunction::ExecuteFile(const std::string& fname)
     return false;
     }
 
-  int flag = PyRun_SimpleFile(fp, fname.c_str());
   fclose(fp);
+  char pystring[sizeof(fname.c_str()) + 14];
+  pystring[0] = '\0';
+  sprintf(pystring, "execfile('%s')", fname.c_str());
+  return PyRun_SimpleString(pystring);
+  /*
+  int flag = PyRun_SimpleFile(fp, fname.c_str());
   if (flag)
     {
       std::ostringstream oss;
@@ -62,6 +67,7 @@ py::PythonCppApiCallFunction::ExecuteFile(const std::string& fname)
       std::cerr << "Err: " << oss.str() << std::endl;
       return false;
     }
+    */
   return true;
 }
 
@@ -80,50 +86,50 @@ bool py::PythonCppApiCallFunction::ImportModule(const std::string& moduleName)
   return true;
 }
 
-py::Variant py::PythonCppApiCallFunction::CallFunction(const std::string& functionName,
+py::PythonCppApiVariant py::PythonCppApiCallFunction::CallFunction(const std::string& functionName,
     const py::ArgMap& args)
 {
   PythonCppApiAutoPyObjectPtr ret (MakeFunctionCall(functionName, args));
   if (PyBool_Check(ret))
     {
     if (ret == Py_True) 
-      return Variant(true);
+      return PythonCppApiVariant(true);
     else 
-      return Variant(false);
+      return PythonCppApiVariant(false);
     }
   if (PyInt_Check(ret))
     {
-    return Variant(PyInt_AsLong(ret));
+    return PythonCppApiVariant(PyInt_AsLong(ret));
     }
   else if (PyFloat_Check(ret))
     {
-    return Variant(PyFloat_AsDouble(ret));
+    return PythonCppApiVariant(PyFloat_AsDouble(ret));
     }
   else if (PyString_Check(ret))
     {
-    return Variant(PyString_AsString(ret));
+    return PythonCppApiVariant(PyString_AsString(ret));
     }
   else if (PyTuple_Check(ret))
     {
     StringList stringList;
     MakeListFromPyTuple(ret, stringList); 
-    return Variant(stringList);
+    return PythonCppApiVariant(stringList);
     }
   else if (PyList_Check(ret))
     {
     StringList stringList;
     PythonCppApiAutoPyObjectPtr tuple (PyList_AsTuple(ret));
     MakeListFromPyTuple(tuple, stringList);
-    return Variant(stringList);
+    return PythonCppApiVariant(stringList);
     }
   else if (PyDict_Check(ret))
     {
     py::StringMap stringMap;
     MakeMapFromPyDictionary(ret, stringMap);
-    return Variant(stringMap);
+    return PythonCppApiVariant(stringMap);
     }
 
-  return Variant();
+  return PythonCppApiVariant();
 }
 
 /// private functions

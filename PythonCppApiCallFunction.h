@@ -8,10 +8,15 @@
 #ifndef PYTHONCPPAPICALLFUNCTION_H
 #define PYTHONCPPAPICALLFUNCTION_H
 
+// Undefine macros that Python.h defines to vaoid redefinition warning
+#undef _POSIX_C_SOURCE
+#undef _POSIX_THREADS
+#undef _XOPEN_SOURCE
+
 #include <Python.h>
 #include "PythonCppApiInterpreter.h"
 #include "PythonCppApiAutoPyObjectPtr.h"
-#include "Variant.h"
+#include "PythonCppApiVariant.h"
 
 #include <string>
 #include <map>
@@ -44,7 +49,7 @@ namespace py
     bool ImportModule(const std::string& moduleName);
   
     /// execute a function in the module
-    py::Variant CallFunction(const std::string& functionName, const ArgMap& args);
+    py::PythonCppApiVariant CallFunction(const std::string& functionName, const ArgMap& args);
   
   private:
     /// grab a function handle from the python module

@@ -1,7 +1,6 @@
 cmake_minimum_required (VERSION 2.8)
 project(PythonCppAPI)
 
-#add_subdirectory(Testing)
 
 find_package(PythonLibs REQUIRED)
 
@@ -51,14 +50,14 @@ set(HEADERS
   PythonCppApiAutoPyObjectPtr.h
   PythonCppApiInterpreter.h
   PythonCppApiCallFunction.h
-  Variant.h
+  PythonCppApiVariant.h
   PythonCppApiUtility.h
   )
 
 set(SOURCES
   PythonCppApiInterpreter.cxx
   PythonCppApiCallFunction.cxx
-  Variant.cxx
+  PythonCppApiVariant.cxx
   PythonCppApiUtility.cxx
   )
 
@@ -111,3 +110,5 @@ endif()
 include(GeneratePythonCppAPIConfig.cmake)
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/UsePythonCppAPI.cmake.in
   ${CMAKE_CURRENT_BINARY_DIR}/UsePythonCppAPI.cmake COPYONLY)
+
+add_subdirectory(Testing)
