@@ -54,10 +54,11 @@ py::PythonCppApiCallFunction::ExecuteFile(const std::string& fname)
     }
 
   fclose(fp);
-  char pystring[sizeof(fname.c_str()) + 14];
-  pystring[0] = '\0';
-  sprintf(pystring, "execfile('%s')", fname.c_str());
-  return PyRun_SimpleString(pystring);
+  
+  std::stringstream ss;
+  ss << "execfile('" << fname << "')";
+  std::string pystring = ss.str();
+  return PyRun_SimpleString(pystring.c_str());
   /*
   int flag = PyRun_SimpleFile(fp, fname.c_str());
   if (flag)
@@ -68,7 +69,6 @@ py::PythonCppApiCallFunction::ExecuteFile(const std::string& fname)
       return false;
     }
     */
-  return true;
 }
 
 bool py::PythonCppApiCallFunction::ImportModule(const std::string& moduleName) 
